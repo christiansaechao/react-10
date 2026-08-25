@@ -1,5 +1,7 @@
 import ProblemCard from "../extras/ProblemCard";
 
+// .map(() => )
+
 export function RenderFruitList() {
   const fruits = ["Apple", "Banana", "Orange"];
 
@@ -10,13 +12,13 @@ export function RenderFruitList() {
       question="Render each fruit inside an <li>."
       dataPreview={fruits}
     >
-      {/* code here */}
-      {fruits.map((fruit) => (
-        <li>{fruit}</li>
-      ))}
+      <ul>
+        {fruits.map((fruit) => (
+          <li>{fruit}</li>
+        ))}
+      </ul>
     </ProblemCard>
   );
 }
-
 
 export default RenderFruitList;

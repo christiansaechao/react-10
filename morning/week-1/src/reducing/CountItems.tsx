@@ -1,5 +1,6 @@
 import React from "react";
 import ProblemCard from "../extras/ProblemCard";
+import "../styles.css"
 // cart.reduce((acc, curr) => , default value)
 
 export const CountItems = () => {

@@ -11,6 +11,7 @@ function ProblemCard(props: {
     <section
       style={{
         border: "1px solid #ddd",
+        background: "#e1e1e1",
         padding: 16,
         borderRadius: 12,
         marginBottom: 16,

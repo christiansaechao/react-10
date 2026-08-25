@@ -1,6 +1,8 @@
-import ProblemCard from "../components/ProblemCard";
+import ProblemCard from "../extras/ProblemCard";
 
 // users.filter(() => somevalue === value)
+//                 => conditional | true => add it to the new array that filter creates
+//
 
 export const AdminsOnly = () => {
   const users = [
@@ -8,6 +10,8 @@ export const AdminsOnly = () => {
     { id: 2, name: "Casey", isAdmin: false },
     { id: 3, name: "Robin", isAdmin: true },
   ];
+
+  const filteredUsers = users.filter((user) => user.isAdmin);
 
   return (
     <ProblemCard
@@ -17,6 +21,11 @@ export const AdminsOnly = () => {
       dataPreview={users}
     >
       {/* [{ id: 1, name: "Alex", isAdmin: true}, { id: 3, name: "Robin", isAdmin: true }] */}
+      {filteredUsers.map((user) => (
+        <div>
+          {user.name}, is an admin {user.isAdmin + ""}
+        </div>
+      ))}
     </ProblemCard>
   );
 };

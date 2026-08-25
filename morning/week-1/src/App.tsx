@@ -1,21 +1,35 @@
 import "./App.css";
-// import FruitList from "./mapping/FruitList";
-// import { RenderNumbers } from "./mapping/RenderNumbers";
-// import { FormatPrices } from "./mapping/FormatPrices";
-// import { EvensOnly } from "./filtering/EvensOnly"
-// import { LongWordsOnly } from "./filtering/LongWordsOnly"
-// import { MultipleConditions } from "./filtering/MultipleConditions";
-// import { SumNumbers } from "./reducing/SumNumbers";
-import { GroupUsers } from "./reducing/GroupUsers";
+import { RenderFruitList } from "./mapping/FruitList";
+import { CapitalizeWords } from "./mapping/CapitalizeWords";
+import { ConditionalRender } from "./mapping/ConditionalRender";
+import { AdminsOnly } from "./filtering/AdminsOnly";
+import { PriceGreaterThan20 } from "./filtering/PriceGreaterThan20";
 
 function App() {
+  
   return (
     <>
-      {/* <MultipleConditions />
-      <SumNumbers /> */}
-      <GroupUsers /> 
+      <RenderFruitList />
+      <CapitalizeWords />
+      <ConditionalRender />
+      <AdminsOnly />
+      <PriceGreaterThan20 />
     </>
   );
 }
 
 export default App;
+
+/**
+ * array methods: 3 higher order functions
+ * filter, map, reduce
+ *
+ * filter returns items into a new array
+ * [].filter(() => conditional | return true or false)
+ *
+ * map returns every item into a new array
+ * [].map(() => )
+ *
+ * reduce, can do everything
+ * [].reduce((acc, curr) => {}, starting value)
+ */

@@ -32,8 +32,6 @@ export const GroupUsers = () => {
     >
       <div>
         {/* TODO: const grouped = users.reduce((acc, u) => {...}, {} as Record<string, typeof users>) Admin: , */}
-        {groupedRoles.admin.map(() => )}
-        {groupedRoles.user.map(() => )}
       </div>
     </ProblemCard>
   );
