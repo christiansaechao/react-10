@@ -10,13 +10,19 @@ export function RenderFruitList() {
       question="Render each fruit inside an <li>."
       dataPreview={fruits}
     >
-      {/* code here */}
+      {/* explicit return */}
+      {fruits.map((fruit) => {
+        const uppercaseFruit = fruit.toUpperCase();
+
+        return <li>{uppercaseFruit}</li>;
+      })}
+
+      {/* implicit return */}
       {fruits.map((fruit) => (
         <li>{fruit}</li>
       ))}
     </ProblemCard>
   );
 }
-
 
 export default RenderFruitList;

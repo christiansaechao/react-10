@@ -14,6 +14,9 @@ function App() {
   return (
     <>
       <UserProfileCard data={Luffy} />
+      <div>
+        <p>temp</p>
+      </div>
     </>
   );
 }

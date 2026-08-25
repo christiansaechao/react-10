@@ -9,10 +9,6 @@ export const FormatPrices = () => {
       question="Render each number as currency with 2 decimals: $3.50, $10.00, ..."
       dataPreview={prices}
     >
-      {prices.map((price) => {
-        const formattedPrice = price.toFixed(2);
-        return <span>${formattedPrice}</span>;
-      })}
     </ProblemCard>
   );
 };

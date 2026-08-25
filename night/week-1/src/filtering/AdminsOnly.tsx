@@ -1,4 +1,4 @@
-import ProblemCard from "../components/ProblemCard";
+import ProblemCard from "../extras/ProblemCard";
 
 // users.filter(() => somevalue === value)
 
@@ -16,7 +16,11 @@ export const AdminsOnly = () => {
       question="Render only the admins."
       dataPreview={users}
     >
-      {/* [{ id: 1, name: "Alex", isAdmin: true}, { id: 3, name: "Robin", isAdmin: true }] */}
+      {users
+        .filter((user) => user.isAdmin)
+        .map(({ name, isAdmin }, index) => (
+          <p>{name}</p>
+        ))}
     </ProblemCard>
   );
 };

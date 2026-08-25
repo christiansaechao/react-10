@@ -1,4 +1,4 @@
-import ProblemCard from "../components/ProblemCard";
+import ProblemCard from "../extras/ProblemCard";
 
 export const RenderFromData = () => {
   const users = [
@@ -12,13 +12,25 @@ export const RenderFromData = () => {
       method="map"
       question="Use map() to render a <UserCard /> for each user."
       dataPreview={users}
-    ></ProblemCard>
+    >
+      {users.map((user) => (
+        <UserCard id={user.id} name={user.name} email={user.email} />
+      ))}
+    </ProblemCard>
   );
 };
 
-const UserCard = () => {
+type UserCardProps = {
+  id: number;
+  name: string;
+  email: string;
+};
+
+// template
+const UserCard = ({ id, name, email }: UserCardProps) => {
   return (
     <div
+      className={id + ""}
       style={{
         border: "1px solid #eee",
         padding: 10,
@@ -27,9 +39,9 @@ const UserCard = () => {
       }}
     >
       <div>
-        <strong>name</strong>
+        <strong>{name}</strong>
       </div>
-      <div style={{ opacity: 0.8 }}>email</div>
+      <div style={{ opacity: 0.8 }}>{email}</div>
     </div>
   );
 };

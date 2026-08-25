@@ -1,12 +1,18 @@
-function ProblemCard(props: {
+type ProblemCardType = {
   title: string;
   method: "map" | "filter" | "reduce";
   question: string;
   dataPreview: unknown;
   children: React.ReactNode;
-}) {
-  const { title, method, question, dataPreview, children } = props;
+};
 
+const ProblemCard = ({
+  title,
+  method,
+  question,
+  dataPreview,
+  children,
+}: ProblemCardType) => {
   return (
     <section
       style={{
@@ -31,11 +37,9 @@ function ProblemCard(props: {
         </details>
       )}
 
-      <div style={{ padding: 12, background: "gray", borderRadius: 10 }}>
-        {children}
-      </div>
+      <div style={{ padding: 12, borderRadius: 10 }}>{children}</div>
     </section>
   );
-}
+};
 
 export default ProblemCard;

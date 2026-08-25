@@ -15,9 +15,6 @@ export const RenderNumbers = () => {
       question='Render each number as: "Number: X".'
       dataPreview={numbers}
     >
-      {numbers.map((number) => (
-        <NumberCard data={number} />
-      ))}
     </ProblemCard>
   );
 };
