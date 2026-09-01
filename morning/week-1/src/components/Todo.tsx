@@ -1,4 +1,8 @@
-import React from "react";
+// imports the entire react module
+
+// .map(() => )
+// .filter(() => )
+// .reduce(() => )
 
 type TodoType = {
   description: string;
@@ -7,9 +11,7 @@ type TodoType = {
 
 export const Todo = (props: TodoType) => {
   return (
-    <div>
-      <p>{props.description}</p>
-      <p>{props.due_date}</p>
-    </div>
+    <>
+    </>
   );
 };

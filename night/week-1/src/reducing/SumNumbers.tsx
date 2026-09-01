@@ -1,12 +1,23 @@
 import React from "react";
 import ProblemCard from "../extras/ProblemCard";
 
-// nums.reduce((acc, curr) => conditional, startingValue);
-// total, compute the sums, 0
+// nums.reduce((acc, curr) => functionality/conditionals, startingValue);
+// acc (accumulator) adding to
+// starting value 0 
 
 export const SumNumbers = () => {
-  const nums = [1, 2, 3, 4];
-  const total = nums.reduce((acc, curr) => acc + curr, 0);
+  const numbers = [1, 2, 3, 4];
+
+
+  // acc = 0
+  // curr = 1
+  // 1 + 2 = 3
+  // 3 + 3 = 6
+  // 6 + 4 = 10
+  
+  const total = numbers.reduce((acc, curr) => {
+    return acc + curr
+  }, 0);
 
   return (
     <ProblemCard
@@ -14,8 +25,6 @@ export const SumNumbers = () => {
       method="reduce"
       question="Use reduce() to compute the sum, then render it."
       dataPreview={nums}
-    >
-      <span>{total}</span>
-    </ProblemCard>
+    ></ProblemCard>
   );
 };

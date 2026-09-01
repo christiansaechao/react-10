@@ -1,19 +1,11 @@
 import "./App.css";
-import { RenderFruitList } from "./mapping/FruitList";
-import { RenderFromData } from "./mapping/RenderFromData";
-import { ConditionalRender } from "./mapping/ConditionalRender";
-import { AdminsOnly } from "./filtering/AdminsOnly";
-import { MultipleConditions } from "./filtering/MultipleConditions";
+import { SearchSimulation } from "./filtering/SearchSimulation";
 
 function App() {
   return (
-    <>
-      <RenderFruitList />
-      <RenderFromData />
-      <ConditionalRender />
-      <AdminsOnly />
-      <MultipleConditions />
-    </>
+    <div>
+      <SearchSimulation searchTerm="React" />
+    </div>
   );
 }
 
