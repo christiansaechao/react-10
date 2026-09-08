@@ -1,39 +1,52 @@
-import { useState } from "react";
-import SmartCounter from "./components/useState/Counter";
+import { useEffect, useState } from "react";
 import "./App.css";
-import CharacterCounter from "./components/useState/CharacterCountInput";
 
-// useState, useEffect, useRef | optimization useMemo, useMemoize
-// Rendering - displaying things in the browser/ui
-// Re-Rendering - updating the browser/ui
+const api_url = "https://rickandmortyapi.com/api/";
 
 /**
- * Triggering a rerender
- * 1. update state
- * 2. props updating in value
+ * character
+ * episode
+ * location
  */
 
-const initial_value = localStorage.getItem("fruit");
-
 function App() {
-  // const [variable_name, setter_function] = useState();
-  const [fruit, setFruit] = useState(initial_value || ""); // undefined => mango =>
+  const [characters, setCharacters] = useState([]); // => where we fetch data,
+  const [endpoint, setEndpoint] = useState("character");
 
-  /**
-   * 1st mount/render: fruit = "mango"
-   * changing state causes: rerender
-   * setFruit(kiwi)
-   */
+  async function getData() {
+    try {
+      const { results } = await fetch(api_url + endpoint).then((res) =>
+        res.json(),
+      );
 
-  const updateFruit = () => {
-    setFruit("mango");
-    localStorage.setItem("fruit", fruit);
-  };
+      setCharacters(results);
+    } catch (err) {
+      throw new Error("Couldn't fetch data from api: " + err);
+    }
+  }
+
+  // empty [], call the function onload
+  // runs one time on load
+  // 3rd party, api (retrieving data)
+  // connecting to a database / server
+  // api (endpoint), websockets (bidirectional connectivity), ttl live connection
+
+  useEffect(() => {
+    getData();
+  }, [endpoint]);
 
   return (
     <div>
-      {/* <SmartCounter /> */}
-      <CharacterCounter />
+      <h1>This is our current endpoint: {endpoint}</h1>
+      <button onClick={() => setEndpoint("character")}>Character</button>
+      <button onClick={() => setEndpoint("episode")}>Episode</button>
+      <button onClick={() => setEndpoint("location")}>Location</button>
+      {characters.map((character: any) => (
+        <div>
+          <h1>{character.name}</h1>
+          <img src={character.image} />
+        </div>
+      ))}
     </div>
   );
 }

@@ -1,102 +1,63 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
+const api_url = "https://rickandmortyapi.com/api/";
 
-// functionality and memory to your components
-// 2 ways to trigger a rerender
-
-// 1. updating state to another value
-// 2. props values change
+/**
+ * api endpoints
+ * 1. character
+ * 2. episodes
+ * 3. locations
+ */
 
 function App() {
-  // variableName, setVariableName
-  const [name, setName] = useState("joshua"); // persists during the user session | in-app memory
+  const [characters, setCharacters] = useState([]); // undefined => [] = [{ rick and morty characters }];
+  const [endpoint, setEndpoint] = useState("episode");
+  const newValue = 15;
 
-  // number (any number)
-  // const [number, setNumber] = useState(21);
+  async function getAPIData() {
+    try {
+      const { results } = await fetch(api_url + endpoint).then((res) =>
+        res.json(),
+      ); // how much time does this take? .00001ms (this returns the response from that server (api));
+      setCharacters(results);
+    } catch (err) {
+      throw new Error(
+        "There was an error trying to fetch Rick and Morty Charcters: " + err,
+      );
+    }
+  }
 
-  // return (
-  //   <div>
-  //     {number}
-  //     <button onClick={() => setNumber(30)}>Update number</button>/
-  //   </div>
-  // )
+  useEffect(() => {
+    getAPIData();
+    alert("running");
+  }, [endpoint, newValue]); // paramters 1. callback function, 2. array
 
-  // object (car)
-  // { key: value }
-  // const [car, setCar] = useState({
-  //   model: "bmw",
-  //   make: "firebird",
-  //   year: 1990,
-  // });
-
-  // car = { model: "bmw", make: "firebird", year: 1990 }
-  // car = { model: "lexus" }
-  // spread operator ...
-
-  // {...car}
-
-  // return (
-  //   <div>
-  //     {car.model}
-  //     <button onClick={() => setCar({ ...car, model: "lexus" })}>
-  //       {" "}
-  //       Change Model
-  //     </button>
-  //   </div>
-  // );
-
-  // array (fruits)
-  const defaultValue = ["apple", "banana", "orange"];
-  const [fruits, setFruits] = useState(defaultValue);
-
-  const games = [
-    { id: 1, name: "Skyrim" },
-    { id: 2, name: "Baldurs Gate" },
-    { id: 3, name: "Oblivion" },
-  ];
-
-  // fruits = "mango"
-  // []
-
-  return (
-    <h1>
-      {/* uniquely identifies each element */}
-      {games.map((game) => (
-        <div key={game.id}>{game.name}</div>
-      ))}
-      <button
-        onClick={() => {
-          const old_fruits = fruits.slice(1); // bannana, orange
-          setFruits(["mango", ...old_fruits]);
-        }}
-      >
-        Update array's first element
-      </button>
-    </h1>
-  );
+  // 1. empty | on component mount, call the function, runs on start
+  // 2. variable/value for the useEffect to listen for, to run the function
 
   return (
     <div>
-      {name}
-      <button onClick={() => setName("adonis")}>Change Name</button>
+      {/* conditional rendering */}
+      <button onClick={() => setEndpoint("character")}>Character</button>
+      <button onClick={() => setEndpoint("episode")}>Episode</button>
+      <button onClick={() => setEndpoint("location")}>Location</button>
+      {characters.map((character: any) => (
+        <div>
+          <h1>{character.name}</h1> <img src={character.image} />
+        </div>
+      ))}
     </div>
   );
 }
 
 export default App;
 
+// asynchronous vs synchronous
+
 /**
- * Returns a new array
- * const people = []
- * map | singular of the plural (array)
- * array.map((person) => <PersonCard person={person} />)
- *
- * const new_array = [ele1, ele2]
- * array.filter((ele) => conditional)
- *
- * array.reduce((acc, curr) => {
- *
- * }, default_value);
- *
+ * 1. the component loads in
+ * 2. api_url || undefined
+ * 3. api_url = "https:"
+ * 4. defining the function
  */

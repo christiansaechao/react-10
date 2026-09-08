@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ReactEventHandler } from "react";
 import { PokemonCard } from "./components/PokemonCard";
 import { SearchSimulation } from "./filtering/SearchSimulation";
 
@@ -48,7 +48,7 @@ function App() {
         data.map((pokemon) => (
           <PokemonCard name={pokemon.name} url={pokemon.url} />
         ))}
-        <SearchSimulation searchTerm={"React"}/>
+      <SearchSimulation searchTerm={"React"} />
     </>
   );
 }
@@ -67,4 +67,105 @@ export default App;
  *
  * reduce, can do everything
  * [].reduce((acc, curr) => {}, starting value)
+ */
+
+/**
+ * HTML File is importing in this script file
+ * <body>
+ *    <all of our UI/HTML goes here />
+ *    <input id="todo-input" type="todo" placeholder="So enter a new todo..."></input>
+ * </body>
+ * <script src="script.js"></script>
+ */
+
+// script.js
+const input = document.getElementById("todo-input"); // this part is getting this HTML element from the browser
+
+let todo = input.value; // "testing", Grabbing that value from the browser
+
+localStorage.setItem("todo-list", todo);
+
+// React, built on top of regular JS, HTML, CSS
+
+export const TodoApp = () => {
+  const [input, setInput] = useState("a"); // going to store whatever someone types into the input box
+  const [displayName, setDisplayName] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+
+  const handleSubmitForm = async (e: any) => {
+    e.preventDefault();
+    setDisplayName(e.target.value);
+    const { response } = await fetch("https://api.mattsserver.app", {
+      method: "POST",
+      body: { formValue },
+    }); // going to the server, and storing your information
+
+    /**
+     * 1. we have all this user information already
+     * 2. load it in from the database
+     */
+
+    setInput("");
+  };
+
+  // Database
+  // database, storing information based on that profile, how far it leans back, the height
+  //
+
+  // separate funciton that checks if this user exists in the database
+  // if it exists load their data from the database
+
+  // signing up for an application => sends (first_name, last_name, email, password)
+  // setDisplayName(e.target.value.first_name + e.target.value.last_name)
+
+  /**
+   * submit a form => server (computers, cost money, process it and costs electricity) => updates in a database (persisting data) another computer that stores everything
+   * just use the values from the inputs instead (client process, client side stuff)
+   */
+
+  return (
+    <>
+      <form onChange={handleSubmitForm}>
+        <input
+          id="first-name"
+          type="text"
+          placeholder="Enter a new todo..."
+          value={input}
+          onChange={handleChange}
+        />
+        <input
+          id="last-name"
+          type="text"
+          placeholder="Enter a new todo..."
+          value={input}
+          onChange={handleChange}
+        />
+        <input
+          id="email"
+          type="text"
+          placeholder="Enter a new todo..."
+          value={input}
+          onChange={handleChange}
+        />
+        <input
+          id="password"
+          type="text"
+          placeholder="Enter a new todo..."
+          value={input}
+          onChange={handleChange}
+        />
+      </form>
+
+      <div>{displayName}</div>
+    </>
+  );
+};
+
+/**
+ * Event Listener => input | onChange, onClick, onKeyDown, onKeyUp
+ * a
+ * 1. set up our state | keeps track of something (input text), setInput updates the input text, and triggers a rerender every time type something
  */
