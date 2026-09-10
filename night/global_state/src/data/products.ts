@@ -1,0 +1,68 @@
+import type { Product } from "../types";
+
+export const PRODUCTS: Product[] = [
+  {
+    id: "p1",
+    name: "Wireless Headphones",
+    description: "Over-ear, noise cancelling, 30h battery.",
+    price: 129.99,
+    image: "🎧",
+    category: "Audio",
+  },
+  {
+    id: "p2",
+    name: "Mechanical Keyboard",
+    description: "Hot-swappable switches, compact 65% layout.",
+    price: 89.0,
+    image: "⌨️",
+    category: "Desk",
+  },
+  {
+    id: "p3",
+    name: "Desk Lamp",
+    description: "Adjustable warmth, USB-C charging base.",
+    price: 44.5,
+    image: "💡",
+    category: "Desk",
+  },
+  {
+    id: "p4",
+    name: "Coffee Mug",
+    description: "Double-walled ceramic, keeps drinks hot.",
+    price: 18.0,
+    image: "☕",
+    category: "Kitchen",
+  },
+  {
+    id: "p5",
+    name: "Running Shoes",
+    description: "Lightweight foam sole, breathable mesh.",
+    price: 112.0,
+    image: "👟",
+    category: "Apparel",
+  },
+  {
+    id: "p6",
+    name: "Backpack",
+    description: "20L, water resistant, laptop sleeve.",
+    price: 75.0,
+    image: "🎒",
+    category: "Apparel",
+  },
+  {
+    id: "p7",
+    name: "Water Bottle",
+    description: "Insulated stainless steel, 750ml.",
+    price: 26.0,
+    image: "🍶",
+    category: "Kitchen",
+  },
+  {
+    id: "p8",
+    name: "Webcam",
+    description: "1080p60, auto light correction.",
+    price: 59.99,
+    image: "📷",
+    category: "Desk",
+  },
+];

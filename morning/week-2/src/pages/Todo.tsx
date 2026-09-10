@@ -26,8 +26,7 @@ Requirements:
  * 
  */
 
-
-import { TodoNavbar } from "../components/todo/TodoNavbar"
+import { TodoNavbar } from "../components/todo/TodoNavbar/TodoNavbar"
 import { SearchBar } from "../components/todo/SearchBar"
 import { TodoFooter } from "../components/todo/TodoFooter"
 import { InputField } from "../components/todo/InputField"

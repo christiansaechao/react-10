@@ -1,8 +1,6 @@
-import { useState, useEffect, type ReactEventHandler } from "react";
+import { useState, useEffect, } from "react";
 import { PokemonCard } from "./components/PokemonCard";
 import { SearchSimulation } from "./filtering/SearchSimulation";
-
-import "./App.css";
 
 // ----    domain---- /api/v2 - endpoint
 // query = filtering parameters
